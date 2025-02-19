@@ -1,0 +1,7 @@
+- link:
+    ~/.config/nvim:
+      create: true
+      path: nvim
+    ~/.config/tmux:
+      create: true
+      path: tmux

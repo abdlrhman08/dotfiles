@@ -1,0 +1,7 @@
+[submodule "dotbot"]
+	path = dotbot
+	url = https://github.com/anishathalye/dotbot
+	ignore = dirty
+[submodule "tmux/muxbar"]
+	path = tmux/muxbar
+	url = https://github.com/Dlurak/muxbar.git

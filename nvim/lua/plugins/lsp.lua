@@ -20,15 +20,25 @@ return {
 
       local mason_lspconfig = require("mason-lspconfig")
       mason_lspconfig.setup({
-        ensure_installed = { "clangd", "pyright" }
+        ensure_installed = { "clangd", "pyright", "tinymist", "rust-analyzer" }
       })
 
       -- Automatic server setup from the mason-lspconfig docs
       mason_lspconfig.setup_handlers({
         function (server_name)
-          require("lspconfig")[server_name].setup({
-            capabilities = require("blink.cmp").get_lsp_capabilities()
-          })
+          if server_name == "tinymist" then
+            require("lspconfig")["tinymist"].setup({
+              settings = {
+                formatterMode = "typstyle",
+                exportPdf = "onType",
+                semanticTokens = "disable"
+              }
+            })
+          else
+              require("lspconfig")[server_name].setup({
+                capabilities = require("blink.cmp").get_lsp_capabilities()
+              })
+          end
         end
       })
     end
@@ -47,5 +57,11 @@ return {
 	}
       })
     end 
-  }
+  },
+    {
+      'chomosuke/typst-preview.nvim',
+      lazy = false, -- or ft = 'typst'
+      version = '1.*',
+      opts = {}, -- lazy.nvim will implicitly calls `setup {}`
+    }
 }

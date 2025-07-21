@@ -1,8 +1,8 @@
 return {
-  "dgox16/oldworld.nvim",
+  "AlexvZyl/nordic.nvim",
   lazy = false,
   priority = 1000,
   config = function()
-    vim.cmd.colorscheme("oldworld")
+    vim.cmd.colorscheme("nordic")
   end
 }
